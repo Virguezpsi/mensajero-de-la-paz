@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mensajero de la Paz — Transformación Personal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #3b82f6;
+      --color-secondary: #f59e0b;
+      --color-accent: #10b981;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0fdf4 0%, #fffbeb 100%);
+      color: #1f2937;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .accent-bg {
+      background: linear-gradient(90deg, #f59e0b, #f97316);
+    }
+    
+    .hero-pattern {
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .testimonial-card {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border-radius: 16px;
+      box-shadow: 5px 5px 15px #d1d5db, -5px -5px 15px #ffffff;
+    }
+    
+    .service-feature {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    
+    .service-feature-icon {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+    }
+    
+    .process-step {
+      position: relative;
+      padding-left: 80px;
+      margin-bottom: 3rem;
+    }
+    
+    .process-step-number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-full bg-green-700 text-white flex items-center justify-center font-bold transition-all duration-300 group-hover:scale-110">JP</div>
+        <div>
+          <div class="font-semibold text-lg">Mensajero de la Paz</div>
+          <div class="text-xs text-slate-500">Paz · No violencia · Transformación</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex gap-6 items-center">
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../about.html">
+          Quién soy
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../projects.html">
+          Proyectos
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="personal.html">
+          Servicios
+          <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-500"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../contact.html">
+          Contacto
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg hover:shadow-lg transition-shadow" href="../contact.html#donar">
+          Apoya la causa
+        </a>
+      </nav>
+
+      <!-- mobile menu -->
+      <div class="md:hidden">
+        <button id="menuBtn" class="p-2 rounded-md border border-gray-300 hover:bg-gray-100 transition">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile menu panel -->
+    <div id="mobilePanel" class="md:hidden hidden bg-white shadow-lg">
+      <div class="px-6 py-4 flex flex-col space-y-3">
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../about.html">Quién soy</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../projects.html">Proyectos</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="personal.html">Servicios</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../contact.html">Contacto</a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg text-center mt-2" href="../contact.html#donar">Apoya</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="hero-pattern py-12 md:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="md:w-2/3">
+            <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-amber-500">
+              Transformación Personal
+            </h1>
+            <p class="mt-4 text-xl text-slate-600">
+              Convierte tu rabia en poder creativo. Aprende a gestionar emociones, transformar conflictos y vivir desde la paz interior.
+            </p>
+            
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="../contact.html" class="px-6 py-3 rounded-full bg-indigo-700 text-white font-medium hover:bg-indigo-800 transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-calendar-check"></i> Agendar sesión
+              </a>
+              <a href="#modalidades" class="px-6 py-3 rounded-full border border-amber-500 text-amber-600 font-medium hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-compass"></i> Ver modalidades
+              </a>
+            </div>
+          </div>
+          
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-64 h-64 rounded-full overflow-hidden shadow-xl border-4 border-white bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+              <i class="fas fa-brain text-white text-7xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="md:flex gap-12 items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h2 class="text-3xl md:text-4xl font-bold">¿Qué es la Transformación Personal?</h2>
+            <div class="w-24 h-1 bg-amber-500 mt-4"></div>
+            
+            <p class="mt-6 text-lg text-slate-700">
+              La Transformación Personal es un proceso consciente y profundo donde aprendes a reconocer, aceptar y transformar tus patrones emocionales, especialmente aquellos relacionados con la rabia, el resentimiento y la frustración.
+            </p>
+            
+            <p class="mt-4 text-lg text-slate-700">
+              A través de metodologías probadas y herramientas prácticas, te guío para que conviertas esa energía que antes era destructiva en fuerza creativa, claridad mental y acciones conscientes.
+            </p>
+            
+            <div class="mt-8 bg-amber-50 p-6 rounded-2xl">
+              <p class="text-amber-800 font-medium">
+                <i class="fas fa-quote-left text-amber-500 mr-2"></i>
+                La paz no es la ausencia de conflicto, sino la capacidad de manejarlo creativamente.
+              </p>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2">
+            <div class="bg-gradient-to-br from-green-50 to-amber-50 p-8 rounded-2xl">
+              <h3 class="text-xl font-semibold mb-6">¿Este proceso es para ti?</h3>
+              
+              <div class="space-y-4">
+                <div class="service-feature">
+                  <div class="service-feature-icon bg-red-100 text-red-600">
+                    <i class="fas fa-fire"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Sientes rabia frecuentemente</h4>
+                    <p class="text-slate-600 mt-1">Reaccionas con irritación o enojo ante situaciones cotidianas.</p>
+                  </div>
+                </div>
+                
+                <div class="service-feature">
+                  <div class="service-feature-icon bg-blue-100 text-blue-600">
+                    <i class="fas fa-weight"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Cargas resentimientos del pasado</h4>
+                    <p class="text-slate-600 mt-1">Experiencias pasadas aún afectan tus relaciones presentes.</p>
+                  </div>
+                </div>
+                
+                <div class="service-feature">
+                  <div class="service-feature-icon bg-purple-100 text-purple-600">
+                    <i class="fas fa-meh"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Te cuesta manejar frustraciones</h4>
+                    <p class="text-slate-600 mt-1">Pequeños inconvenientes te generan gran malestar.</p>
+                  </div>
+                </div>
+                
+                <div class="service-feature">
+                  <div class="service-feature-icon bg-green-100 text-green-600">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Quieres responder en lugar de reaccionar</h4>
+                    <p class="text-slate-600 mt-1">Deseas mayor control sobre tus respuestas emocionales.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Beneficios de la Transformación Personal</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Lo que lograrás a través de este proceso</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-white p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Autoconocimiento</h3>
+            <p class="text-slate-600">Comprende tus patrones emocionales y cómo se originaron.</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Regulación Emocional</h3>
+            <p class="text-slate-600">Aprende técnicas para gestionar emociones intensas saludablemente.</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Relaciones Sanas</h3>
+            <p class="text-slate-600">Mejora la comunicación y conexión con tus seres queridos.</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-purple-100 text-purple-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Claridad Mental</h3>
+            <p class="text-slate-600">Despeja la niebla emocional para tomar decisiones conscientes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modalidades -->
+    <section id="modalidades" class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Modalidades de Trabajo</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Encuentra la forma que mejor se adapte a tus necesidades</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl card-hover">
+            <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 text-2xl flex items-center justify-center mb-6">
+              <i class="fas fa-user"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Sesiones Individuales</h3>
+            <p class="text-slate-600 mb-6">Atención personalizada para un trabajo profundo y enfocado en tus necesidades específicas.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>Sesiones de 60-90 minutos</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>Enfoque en tus desafíos específicos</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>Herramientas personalizadas</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>Seguimiento continuo</span>
+              </li>
+            </ul>
+            <a href="../contact.html" class="block text-center px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition">
+              Solicitar información
+            </a>
+          </div>
+          
+          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl card-hover">
+            <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-600 text-2xl flex items-center justify-center mb-6">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Talleres Grupales</h3>
+            <p class="text-slate-600 mb-6">Experiencias grupales donde aprendemos juntos y nos apoyamos en el proceso de transformación.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                <span>Grupos reducidos (8-12 personas)</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                <span>Dinámicas experienciales</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                <span>Aprendizaje colectivo</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                <span>Comunidad de apoyo</span>
+              </li>
+            </ul>
+            <a href="../contact.html" class="block text-center px-6 py-3 bg-amber-500 text-white rounded-full font-medium hover:bg-amber-600 transition">
+              Próximos talleres
+            </a>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl card-hover">
+            <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 text-2xl flex items-center justify-center mb-6">
+              <i class="fas fa-laptop"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Programa Online</h3>
+            <p class="text-slate-600 mb-6">Accede a recursos, meditaciones guiadas y sesiones en vivo desde la comodidad de tu hogar.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                <span>Contenido disponible 24/7</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                <span>Sesiones en vivo semanales</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                <span>Comunidad virtual</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                <span>Recursos desbloqueables</span>
+              </li>
+            </ul>
+            <a href="../contact.html" class="block text-center px-6 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition">
+              Acceder al programa
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proceso de Trabajo -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">¿Cómo Funciona el Proceso?</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Un camino progresivo hacia tu transformación personal</p>
+        </div>
+        
+        <div class="space-y-12">
+          <div class="process-step">
+            <div class="process-step-number bg-green-100 text-green-700">1</div>
+            <h3 class="text-2xl font-semibold mb-4">Evaluación Inicial</h3>
+            <p class="text-slate-600">Comenzamos con una sesión de evaluación donde identificamos juntos tus patrones emocionales, desencadenantes y áreas de oportunidad. Establecemos objetivos claros para tu proceso.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-step-number bg-amber-100 text-amber-700">2</div>
+            <h3 class="text-2xl font-semibold mb-4">Toma de Conciencia</h3>
+            <p class="text-slate-600">A través de diversas técnicas, desarrollamos la capacidad de observar tus emociones sin quedar atrapado en ellas. Aprendes a reconocer los primeros signos de la rabia antes de que se intensifique.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-step-number bg-blue-100 text-blue-700">3</div>
+            <h3 class="text-2xl font-semibold mb-4">Herramientas Prácticas</h3>
+            <p class="text-slate-600">Te proveo de un conjunto de herramientas concretas para gestionar emociones intensas: técnicas de respiración, prácticas de grounding, métodos de reencuadre cognitivo y estrategias de comunicación consciente.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-step-number bg-purple-100 text-purple-700">4</div>
+            <h3 class="text-2xl font-semibold mb-4">Integración y Práctica</h3>
+            <p class="text-slate-600">Trabajamos en la aplicación de estas herramientas en situaciones reales de tu vida. Acompañamos el proceso de integración hasta que las nuevas formas de responder se conviertan en naturales.</p>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-step-number bg-red-100 text-red-700">5</div>
+            <h3 class="text-2xl font-semibold mb-4">Autonomía y Sostenibilidad</h3>
+            <p class="text-slate-600">Finalmente, fortalecemos tu capacidad para mantener estos cambios a largo plazo. Desarrollamos estrategias de autocuidado y prácticas continuas que te permitirán seguir creciendo por tu cuenta.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Historias de Transformación</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Experiencias reales de personas que han recorrido este camino</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center text-green-700">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="ml-4">
+                <div class="font-semibold">Carlos M.</div>
+                <div class="text-sm text-slate-500">32 años, Ingeniero</div>
+              </div>
+            </div>
+            <p class="text-slate-600">"Aprendí a gestionar mi frustración en el trabajo. Antes explotaba por pequeñas cosas, ahora puedo mantener la calma y encontrar soluciones creativas. Mi equipo lo ha notado y mis relaciones laborales han mejorado enormemente."</p>
+            <div class="mt-4 text-amber-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-blue-200 flex items-center justify-center text-blue-700">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="ml-4">
+                <div class="font-semibold">María L.</div>
+                <div class="text-sm text-slate-500">41 años, Madre y Empresaria</div>
+              </div>
+            </div>
+            <p class="text-slate-600">"El proceso me ayudó a transformar mi relación con el estrés y la ira. Ahora puedo ser la madre paciente que siempre quise ser. Las herramientas que aprendí son prácticas y las uso a diario en mi familia y negocio."</p>
+            <div class="mt-4 text-amber-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+          
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center text-amber-700">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="ml-4">
+                <div class="font-semibold">Javier R.</div>
+                <div class="text-sm text-slate-500">28 años, Estudiante</div>
+              </div>
+            </div>
+            <p class="text-slate-600">"Llegué con mucha rabia acumulada de mi pasado. El proceso fue desafiante pero transformative. Aprendí a soltar resentimientos y perdonar. Ahora tengo más energía para mis estudios y he reconstruido relaciones familiares."</p>
+            <div class="mt-4 text-amber-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Llamado a la acción -->
+    <section class="py-16 bg-gradient-to-r from-green-500 to-amber-500">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold">¿Listo para Transformar tu Vida?</h2>
+        <p class="mt-4 text-xl opacity-90">Da el primer paso hacia una relación más pacífica contigo mismo y con los demás.</p>
+        
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="../contact.html" class="px-8 py-4 bg-white text-amber-600 rounded-full font-medium hover:bg-gray-100 transition shadow-lg hover:shadow-xl">
+            <i class="fas fa-calendar-check mr-2"></i> Agendar sesión inicial
+          </a>
+          <a href="../contact.html" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-amber-600 transition">
+            <i class="fas fa-question-circle mr-2"></i> Hacer una pregunta
+          </a>
+        </div>
+        
+        <p class="mt-8 text-amber-100">¿Tienes dudas? Te ayudo a encontrar la modalidad que mejor se adapte a tus necesidades.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-white pt-12 pb-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="font-semibold text-xl mb-4">Mensajero de la Paz</div>
+          <p class="text-gray-400">Transformando la rabia en acción consciente, construyendo paz desde lo personal a lo colectivo.</p>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Enlaces rápidos</div>
+          <ul class="space-y-2">
+            <li><a href="../about.html" class="text-gray-400 hover:text-white transition">Quién soy</a></li>
+            <li><a href="../projects.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+            <li><a href="personal.html" class="text-gray-400 hover:text-white transition">Servicios</a></li>
+            <li><a href="../contact.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Servicios</div>
+          <ul class="space-y-2">
+            <li><a href="personal.html" class="text-gray-400 hover:text-white transition">Transformación Personal</a></li>
+            <li><a href="experiencias.html" class="text-gray-400 hover:text-white transition">Experiencias de Paz</a></li>
+            <li><a href="impacto.html" class="text-gray-400 hover:text-white transition">Impacto Social</a></li>
+            <li><a href="ancestral.html" class="text-gray-400 hover:text-white transition">Sabiduría Ancestral</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Conectemos</div>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+          
+          <div class="mt-6">
+            <a href="https://paypal.me/pazynoviolencia" target="_blank" class="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 rounded-full transition">
+              <i class="fas fa-heart mr-2"></i> Apoyar la causa
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-gray-400 text-sm">
+          &copy; 2023 Mensajero de la Paz. Todos los derechos reservados.
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white text-sm mr-4">Políticas de privacidad</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm">Términos y condiciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('mobilePanel');
+    btn?.addEventListener('click', ()=> {
+      panel.classList.toggle('hidden');
+    });
+    
+    // Animación al hacer scroll
+    function checkFade() {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementTop < windowHeight * 0.85) {
+          element.classList.add('visible');
+        }
+      });
+    }
+    
+    // Iniciar animaciones cuando la página carga
+    window.addEventListener('load', function() {
+      // Configurar observador para animaciones al hacer scroll
+      checkFade();
+      window.addEventListener('scroll', checkFade);
+    });
+  </script>
+</body>
+</html>
