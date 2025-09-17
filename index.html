@@ -3,143 +3,271 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mensajero de la Paz — Inicio</title>
+  <title>Mensajero de la Paz — Transformando la rabia en paz</title>
 
   <!-- Tailwind CDN para prototipo rápido -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
   <style>
-    /* ajustes pequeños */
-    .accent { background: linear-gradient(90deg,#f59e0b,#f97316); }
+    /* Estilos personalizados */
+    :root {
+      --color-primary: #3b82f6;
+      --color-secondary: #f59e0b;
+      --color-accent: #10b981;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0fdf4 0%, #fffbeb 100%);
+      color: #1f2937;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .accent-bg {
+      background: linear-gradient(90deg, #f59e0b, #f97316);
+    }
+    
+    .hero-pattern {
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .testimonial-card {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border-radius: 16px;
+      box-shadow: 5px 5px 15px #d1d5db, -5px -5px 15px #ffffff;
+    }
   </style>
 </head>
-<body class="bg-gradient-to-br from-emerald-50 to-amber-50 text-slate-800 min-h-screen flex flex-col">
-
-<header class="bg-white/80 backdrop-blur shadow-sm">
-  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-full bg-green-700 text-white flex items-center justify-center font-bold">JP</div>
-      <div>
-        <div class="font-semibold">Mensajero de la Paz</div>
-        <div class="text-xs text-slate-500">Paz · No violencia · Transformación</div>
-      </div>
-    </a>
-
-    <nav class="hidden md:flex gap-4 items-center">
-      <a class="hover:underline" href="about.html">Quién soy</a>
-      <a class="hover:underline" href="projects.html">Proyectos</a>
-      <a class="hover:underline" href="servicios/personal.html">Servicios</a>
-      <a class="hover:underline" href="contact.html">Contacto</a>
-      <a class="px-3 py-1 rounded-md text-white accent" href="contact.html#donar">Apoya</a>
-    </nav>
-
-    <!-- mobile menu -->
-    <div class="md:hidden">
-      <button id="menuBtn" class="p-2 rounded-md border">☰</button>
-    </div>
-  </div>
-
-  <!-- mobile menu panel -->
-  <div id="mobilePanel" class="md:hidden hidden px-6 pb-4">
-    <a class="block py-2" href="about.html">Quién soy</a>
-    <a class="block py-2" href="projects.html">Proyectos</a>
-    <a class="block py-2" href="servicios/personal.html">Servicios</a>
-    <a class="block py-2" href="contact.html">Contacto</a>
-  </div>
-</header>
-
-<main class="flex-1">
-  <section class="max-w-5xl mx-auto px-6 py-12 text-center">
-    <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">Transforma la rabia en paz — camina con nosotros</h1>
-    <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-      Un espacio vivo para aprender, sanar y actuar. Talleres, experiencias y comunidad para construir un mundo sin violencia.
-    </p>
-
-    <div class="mt-8 flex flex-col md:flex-row gap-4 justify-center">
-      <a href="servicios/personal.html" class="px-6 py-3 rounded-md bg-indigo-700 text-white">Explora nuestros servicios</a>
-      <a href="contact.html" class="px-6 py-3 rounded-md border">Invítame a tu comunidad</a>
-    </div>
-  </section>
-
-  <!-- servicios grid -->
-  <section class="max-w-5xl mx-auto px-6 py-8">
-    <h2 class="text-2xl font-semibold mb-4">Líneas de trabajo</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Card: Transformación Personal -->
-      <a href="servicios/personal.html" class="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-        <div class="text-amber-500 text-3xl">🧭</div>
-        <h3 class="mt-3 font-semibold">Transformación Personal</h3>
-        <p class="mt-2 text-sm text-slate-600">Talleres y herramientas para gestionar emociones y transformar la rabia en acción consciente.</p>
+<body class="min-h-screen flex flex-col">
+  <!-- Header con mejor diseño -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-full bg-green-700 text-white flex items-center justify-center font-bold transition-all duration-300 group-hover:scale-110">JP</div>
+        <div>
+          <div class="font-semibold text-lg">Mensajero de la Paz</div>
+          <div class="text-xs text-slate-500">Paz · No violencia · Transformación</div>
+        </div>
       </a>
 
-      <a href="servicios/experiencias.html" class="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-        <div class="text-emerald-500 text-3xl">🌿</div>
-        <h3 class="mt-3 font-semibold">Experiencias de Paz</h3>
-        <p class="mt-2 text-sm text-slate-600">Círculos de palabra, caminatas conscientes y espacios vivenciales.</p>
-      </a>
+      <nav class="hidden md:flex gap-6 items-center">
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="about.html">
+          Quién soy
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="projects.html">
+          Proyectos
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="servicios/personal.html">
+          Servicios
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="contact.html">
+          Contacto
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg hover:shadow-lg transition-shadow" href="contact.html#donar">
+          Apoya la causa
+        </a>
+      </nav>
 
-      <a href="servicios/impacto.html" class="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-        <div class="text-sky-500 text-3xl">🏛️</div>
-        <h3 class="mt-3 font-semibold">Impacto Social y Educativo</h3>
-        <p class="mt-2 text-sm text-slate-600">Programas para instituciones con objetivos claros y resultados medibles.</p>
-      </a>
-
-      <a href="servicios/comunidad.html" class="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-        <div class="text-pink-500 text-3xl">🤝</div>
-        <h3 class="mt-3 font-semibold">Comunidad en Acción</h3>
-        <p class="mt-2 text-sm text-slate-600">Proyectos barriales, procesos participativos y fortalecimiento comunitario.</p>
-      </a>
-
-      <a href="servicios/ancestral.html" class="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-        <div class="text-yellow-500 text-3xl">✨</div>
-        <h3 class="mt-3 font-semibold">Sabiduría Ancestral</h3>
-        <p class="mt-2 text-sm text-slate-600">Prácticas de sanación, conexión con la naturaleza y saberes ancestrales.</p>
-      </a>
-    </div>
-  </section>
-
-  <!-- proyectos breves -->
-  <section class="max-w-5xl mx-auto px-6 py-8">
-    <h2 class="text-2xl font-semibold mb-4">Proyectos recientes</h2>
-    <div class="grid md:grid-cols-3 gap-4">
-      <div class="p-4 bg-white rounded shadow">
-        <h4 class="font-semibold">Taller en Universidad</h4>
-        <p class="text-sm text-slate-600">Sesión sobre gestión emocional para estudiantes universitarios.</p>
-      </div>
-      <div class="p-4 bg-white rounded shadow">
-        <h4 class="font-semibold">Centro en Apulo</h4>
-        <p class="text-sm text-slate-600">Proyecto de bioconstrucción y sanación ancestral en el territorio.</p>
-      </div>
-      <div class="p-4 bg-white rounded shadow">
-        <h4 class="font-semibold">Marcha Mundial</h4>
-        <p class="text-sm text-slate-600">Acciones y movilización por la paz y la no violencia.</p>
+      <!-- mobile menu -->
+      <div class="md:hidden">
+        <button id="menuBtn" class="p-2 rounded-md border border-gray-300 hover:bg-gray-100 transition">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
-  </section>
-</main>
 
-<footer class="bg-white/90">
-  <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-    <div>
-      <div class="font-semibold">Mensajero de la Paz</div>
-      <div class="text-sm text-slate-600">José Eduardo Virguez Mora</div>
+    <!-- mobile menu panel -->
+    <div id="mobilePanel" class="md:hidden hidden bg-white shadow-lg">
+      <div class="px-6 py-4 flex flex-col space-y-3">
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="about.html">Quién soy</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="projects.html">Proyectos</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="servicios/personal.html">Servicios</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="contact.html">Contacto</a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg text-center mt-2" href="contact.html#donar">Apoya</a>
+      </div>
     </div>
+  </header>
 
-    <div class="flex gap-3 items-center">
-      <!-- reemplaza TU_WHATSAPP sin + ni espacios: ej. 57300xxxx -->
-      <a class="text-sm" href="https://wa.me/573103297730" target="_blank" rel="noreferrer">💬 WhatsApp</a>
-      <a class="text-sm" href="mailto:virguezpsi@gmail.com">✉️ Correo</a>
-      <a id="donate" class="px-3 py-1 rounded-md accent text-white text-sm" href="https://paypal.me/pazynoviolencia" target="_blank" rel="noreferrer">Donar</a>
-    </div>
-  </div>
-</footer>
+  <main class="flex-1">
+    <!-- Hero section mejorada -->
+    <section class="hero-pattern py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-amber-500">
+          Transforma la rabia en paz — camina con nosotros
+        </h1>
+        <p class="mt-6 text-xl text-slate-600 max-w-3xl mx-auto">
+          Un espacio vivo para aprender, sanar y actuar. Talleres, experiencias y comunidad para construir un mundo sin violencia.
+        </p>
 
-<script>
-  // mobile menu
-  const btn = document.getElementById('menuBtn');
-  const panel = document.getElementById('mobilePanel');
-  btn?.addEventListener('click', ()=> {
-    panel.classList.toggle('hidden');
-  });
-</script>
-</body>
-</html>
+        <div class="mt-10 flex flex-col md:flex-row gap-4 justify-center">
+          <a href="servicios/personal.html" class="px-8 py-4 rounded-full bg-indigo-700 text-white font-medium hover:bg-indigo-800 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+            <i class="fas fa-compass"></i> Explora nuestros servicios
+          </a>
+          <a href="contact.html" class="px-8 py-4 rounded-full border border-amber-500 text-amber-600 font-medium hover:bg-amber-500 hover:text-white transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+            <i class="fas fa-users"></i> Invítame a tu comunidad
+          </a>
+        </div>
+        
+        <div class="mt-12 floating">
+          <i class="fas fa-chevron-down text-amber-500 text-2xl"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contador de impacto -->
+    <section class="bg-gradient-to-r from-green-500 to-amber-500 text-white py-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div class="p-4">
+            <div class="text-3xl md:text-4xl font-bold" id="counter1">500</div>
+            <div class="text-sm uppercase tracking-wider">Personas impactadas</div>
+          </div>
+          <div class="p-4">
+            <div class="text-3xl md:text-4xl font-bold" id="counter2">45</div>
+            <div class="text-sm uppercase tracking-wider">Talleres realizados</div>
+          </div>
+          <div class="p-4">
+            <div class="text-3xl md:text-4xl font-bold" id="counter3">12</div>
+            <div class="text-sm uppercase tracking-wider">Comunidades</div>
+          </div>
+          <div class="p-4">
+            <div class="text-3xl md:text-4xl font-bold" id="counter4">5</div>
+            <div class="text-sm uppercase tracking-wider">Años de experiencia</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- servicios grid mejorado -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold">Líneas de trabajo</h2>
+        <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Ofrecemos diversas formas de conectar con la paz interior y exterior</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card: Transformación Personal -->
+        <a href="servicios/personal.html" class="block p-8 bg-white rounded-2xl shadow-md card-hover group">
+          <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-600 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-compass"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Transformación Personal</h3>
+          <p class="mt-4 text-slate-600">Talleres y herramientas para gestionar emociones y transformar la rabia en acción consciente.</p>
+          <div class="mt-6 text-amber-500 flex items-center group-hover:translate-x-2 transition-transform">
+            <span>Descubre más</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </a>
+
+        <a href="servicios/experiencias.html" class="block p-8 bg-white rounded-2xl shadow-md card-hover group">
+          <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Experiencias de Paz</h3>
+          <p class="mt-4 text-slate-600">Círculos de palabra, caminatas conscientes y espacios vivenciales.</p>
+          <div class="mt-6 text-green-500 flex items-center group-hover:translate-x-2 transition-transform">
+            <span>Descubre más</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </a>
+
+        <a href="servicios/impacto.html" class="block p-8 bg-white rounded-2xl shadow-md card-hover group">
+          <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Impacto Social y Educativo</h3>
+          <p class="mt-4 text-slate-600">Programas para instituciones con objetivos claros y resultados medibles.</p>
+          <div class="mt-6 text-blue-500 flex items-center group-hover:translate-x-2 transition-transform">
+            <span>Descubre más</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </a>
+
+        <a href="servicios/comunidad.html" class="block p-8 bg-white rounded-2xl shadow-md card-hover group">
+          <div class="w-16 h-16 rounded-full bg-pink-100 text-pink-600 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Comunidad en Acción</h3>
+          <p class="mt-4 text-slate-600">Proyectos barriales, procesos participativos y fortalecimiento comunitario.</p>
+          <div class="mt-6 text-pink-500 flex items-center group-hover:translate-x-2 transition-transform">
+            <span>Descubre más</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </a>
+
+        <a href="servicios/ancestral.html" class="block p-8 bg-white rounded-2xl shadow-md card-hover group">
+          <div class="w-16 h-16 rounded-full bg-yellow-100 text-yellow-600 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Sabiduría Ancestral</h3>
+          <p class="mt-4 text-slate-600">Prácticas de sanación, conexión con la naturaleza y saberes ancestrales.</p>
+          <div class="mt-6 text-yellow-500 flex items-center group-hover:translate-x-2 transition-transform">
+            <span>Descubre más</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </a>
+        
+        <!-- Nueva tarjeta CTA -->
+        <div class="block p-8 bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-2xl shadow-md card-hover flex flex-col justify-center">
+          <h3 class="text-xl font-semibold">¿No encuentras lo que buscas?</h3>
+          <p class="mt-4">Diseñamos experiencias personalizadas según tus necesidades.</p>
+          <a href="contact.html" class="mt-6 px-6 py-3 bg-white text-orange-500 rounded-full font-medium text-center hover:bg-gray-100 transition">
+            Contáctanos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="bg-gray-50 py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Voces de transformación</h2>
+          <p class="mt-4 text-lg text-slate-600">Lo que dicen quienes han participado
