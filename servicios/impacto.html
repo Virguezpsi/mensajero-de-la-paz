@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mensajero de la Paz — Impacto Social</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #3b82f6;
+      --color-secondary: #f59e0b;
+      --color-accent: #10b981;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0fdf4 0%, #fffbeb 100%);
+      color: #1f2937;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .accent-bg {
+      background: linear-gradient(90deg, #f59e0b, #f97316);
+    }
+    
+    .hero-pattern {
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .testimonial-card {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border-radius: 16px;
+      box-shadow: 5px 5px 15px #d1d5db, -5px -5px 15px #ffffff;
+    }
+    
+    .impact-stat {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-full bg-green-700 text-white flex items-center justify-center font-bold transition-all duration-300 group-hover:scale-110">JP</div>
+        <div>
+          <div class="font-semibold text-lg">Mensajero de la Paz</div>
+          <div class="text-xs text-slate-500">Paz · No violencia · Transformación</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex gap-6 items-center">
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../about.html">
+          Quién soy
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../projects.html">
+          Proyectos
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="personal.html">
+          Servicios
+          <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-500"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../contact.html">
+          Contacto
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg hover:shadow-lg transition-shadow" href="../contact.html#donar">
+          Apoya la causa
+        </a>
+      </nav>
+
+      <!-- mobile menu -->
+      <div class="md:hidden">
+        <button id="menuBtn" class="p-2 rounded-md border border-gray-300 hover:bg-gray-100 transition">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile menu panel -->
+    <div id="mobilePanel" class="md:hidden hidden bg-white shadow-lg">
+      <div class="px-6 py-4 flex flex-col space-y-3">
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../about.html">Quién soy</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../projects.html">Proyectos</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="personal.html">Servicios</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../contact.html">Contacto</a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg text-center mt-2" href="../contact.html#donar">Apoya</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="hero-pattern py-12 md:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="md:w-2/3">
+            <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-amber-500">
+              Impacto Social
+            </h1>
+            <p class="mt-4 text-xl text-slate-600">
+              Llevando la paz y la transformación a comunidades, instituciones y organizaciones. Programas diseñados para generar cambios sistémicos y sostenibles.
+            </p>
+            
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="../contact.html" class="px-6 py-3 rounded-full bg-indigo-700 text-white font-medium hover:bg-indigo-800 transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-handshake"></i> Solicitar información
+              </a>
+              <a href="#programas" class="px-6 py-3 rounded-full border border-amber-500 text-amber-600 font-medium hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-list"></i> Ver programas
+              </a>
+            </div>
+          </div>
+          
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-64 h-64 rounded-full overflow-hidden shadow-xl border-4 border-white bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+              <i class="fas fa-hands-helping text-white text-7xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="md:flex gap-12 items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h2 class="text-3xl md:text-4xl font-bold">Transformación Colectiva</h2>
+            <div class="w-24 h-1 bg-amber-500 mt-4"></div>
+            
+            <p class="mt-6 text-lg text-slate-700">
+              Creemos que la paz individual debe expandirse hacia la paz colectiva. Nuestros programas de impacto social están diseñados para instituciones educativas, organizaciones comunitarias, empresas y entidades gubernamentales.
+            </p>
+            
+            <p class="mt-4 text-lg text-slate-700">
+              Trabajamos con metodologías participativas que involucran a todos los actores del sistema, generando cambios que perduran en el tiempo y crean culturas organizacionales más pacíficas y productivas.
+            </p>
+            
+            <div class="mt-8 bg-blue-50 p-6 rounded-2xl">
+              <p class="text-blue-800 font-medium">
+                <i class="fas fa-quote-left text-blue-500 mr-2"></i>
+                La paz no es solo ausencia de conflicto, sino presencia de justicia, equidad y oportunidades para todos.
+              </p>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2">
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl">
+              <h3 class="text-xl font-semibold mb-6">Nuestro Enfoque de Impacto</h3>
+              
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-search"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Diagnóstico Participativo</h4>
+                    <p class="text-slate-600 mt-1">Identificamos junto a la comunidad sus desafíos y recursos.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-puzzle-piece"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Diseño Colaborativo</h4>
+                    <p class="text-slate-600 mt-1">Cocreamos soluciones adaptadas a cada contexto y necesidad.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Implementación Acompañada</h4>
+                    <p class="text-slate-600 mt-1">Aseguramos la apropiación y sostenibilidad de los procesos.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Evaluación Continua</h4>
+                    <p class="text-slate-600 mt-1">Medimos resultados y ajustamos estrategias en tiempo real.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programas -->
+    <section id="programas" class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Programas de Impacto</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Soluciones específicas para diferentes contextos y necesidades</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Programa 1 -->
+          <div class="bg-white p-8 rounded-2xl shadow-md card-hover">
+            <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 text-2xl flex items-center justify-center mb-6">
+              <i class="fas fa-school"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Escuelas de Paz</h3>
+            <p class="text-slate-600 mb-6">Programa integral para instituciones educativas que transforma los entornos de aprendizaje en espacios pacíficos y resilientes.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>Formación a docentes en pedagogías de paz</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>Programas de convivencia para estudiantes</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>Familias como agentes de paz</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span>Metodologías de resolución pacífica de conflictos</span>
+              </li>
+            </ul>
+            <a href="../contact.html" class="text-green-500 hover:text-green-600 font-medium flex items-center">
+              Más información <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+          
+          <!-- Programa 2 -->
+          <div class="bg-white p-8 rounded-2xl shadow-md card-hover">
+            <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 text-2xl flex items-center justify-center mb-6">
+              <i class="fas fa-building"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Organizaciones Pacíficas</h3>
+            <p class="text-slate-600 mb-6">Transformación cultural organizacional para empresas e instituciones que buscan entornos laborales más saludables y productivos.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                <span>Diagnóstico de clima organizacional</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                <span>Comunicación no violenta aplicada</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                <span>Gestión emocional para equipos</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                <span>Liderazgo consciente y transformador</span>
+              </li>
+            </ul>
+            <a href="../contact.html" class="text-blue-500 hover:text-blue-600 font-medium flex items-center">
+              Más información <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+          
+          <!-- Programa 3 -->
+          <div class="bg-white p-8 rounded-2xl shadow-md card-hover">
+            <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-600 text-2xl flex items-center justify-center mb-6">
+              <i class="fas fa-home"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Comunidades Resilientes</h3>
+            <p class="text-slate-600 mb-6">Procesos participativos para fortalecer el tejido social en comunidades vulnerables o en situación de conflicto.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                <span>Cartografía social y mapeo comunitario</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                <span>Fortalecimiento de liderazgos locales</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                <span>Proyectos de memoria y reconciliación</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                <span>Estrategias de paz territorial</span>
+              </li>
+            </ul>
+            <a href="../contact.html" class="text-amber-500 hover:text-amber-600 font-medium flex items-center">
+              Más información <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+          
+          <!-- Programa 4 -->
+          <div class="bg-white p-8 rounded-2xl shadow-md card-hover">
+            <div class="w-16 h-16 rounded-full bg-purple-100 text-purple-600 text-2xl flex items-center justify-center mb-6">
+              <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Instituciones Públicas</h3>
+            <p class="text-slate-600 mb-6">Asesoría y acompañamiento a entidades gubernamentales en la implementación de políticas públicas para la paz.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                <span>Diseño de programas de paz local</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                <span>Capacitación a funcionarios públicos</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                <span>Sistemas de alerta temprana de conflictos</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                <span>Metodologías de participación ciudadana</span>
+              </li>
+            </ul>
+            <a href="../contact.html" class="text-purple-500 hover:text-purple-600 font-medium flex items-center">
+              Más información <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Estadísticas de Impacto -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Nuestro Impacto en Números</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Resultados tangibles de nuestro trabajo en comunidades e instituciones</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="impact-stat">
+            <div class="text-4xl font-bold text-green-600" id="stat1">25</div>
+            <div class="text-sm text-slate-600 mt-2">Instituciones educativas transformadas</div>
+          </div>
+          <div class="impact-stat">
+            <div class="text-4xl font-bold text-blue-600" id="stat2">1800</div>
+            <div class="text-sm text-slate-600 mt-2">Docentes capacitados</div>
+          </div>
+          <div class="impact-stat">
+            <div class="text-4xl font-bold text-amber-600" id="stat3">15</div>
+            <div class="text-sm text-slate-600 mt-2">Comunidades acompañadas</div>
+          </div>
+          <div class="impact-stat">
+            <div class="text-4xl font-bold text-purple-600" id="stat4">42</div>
+            <div class="text-sm text-slate-600 mt-2">Proyectos de paz implementados</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aliados -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Aliados Estratégicos</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Instituciones y organizaciones que han confiado en nuestro trabajo</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+          <div class="bg-white p-6 rounded-2xl shadow-sm flex items-center justify-center h-24">
+            <div class="text-xl font-bold text-slate-700">Alcaldía de Bogotá</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm flex items-center justify-center h-24">
+            <div class="text-xl font-bold text-slate-700">Universidad Nacional</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm flex items-center justify-center h-24">
+            <div class="text-xl font-bold text-slate-700">Colegio San Francisco</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm flex items-center justify-center h-24">
+            <div class="text-xl font-bold text-slate-700">Fundación Mi Sangre</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm flex items-center justify-center h-24">
+            <div class="text-xl font-bold text-slate-700">Empresa Privada A</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm flex items-center justify-center h-24">
+            <div class="text-xl font-bold text-slate-700">Organización B</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm flex items-center justify-center h-24">
+            <div class="text-xl font-bold text-slate-700">Gobernación</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm flex items-center justify-center h-24">
+            <div class="text-xl font-bold text-slate-700">ONG Internacional</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Llamado a la acción -->
+    <section class="py-16 bg-gradient-to-r from-green-500 to-amber-500">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold">¿Listo para Transformar tu Comunidad u Organización?</h2>
+        <p class="mt-4 text-xl opacity-90">Juntos podemos crear entornos más pacíficos, resilientes y productivos.</p>
+        
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="../contact.html" class="px-8 py-4 bg-white text-amber-600 rounded-full font-medium hover:bg-gray-100 transition shadow-lg hover:shadow-xl">
+            <i class="fas fa-calendar-alt mr-2"></i> Agendar reunión
+          </a>
+          <a href="../contact.html" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-amber-600 transition">
+            <i class="fas fa-file-alt mr-2"></i> Solicitar propuesta
+          </a>
+        </div>
+        
+        <p class="mt-8 text-amber-100">Ofrecemos consultoría, capacitación y acompañamiento para todo tipo de organizaciones.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-white pt-12 pb-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="font-semibold text-xl mb-4">Mensajero de la Paz</div>
+          <p class="text-gray-400">Transformando la rabia en acción consciente, construyendo paz desde lo personal a lo colectivo.</p>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Enlaces rápidos</div>
+          <ul class="space-y-2">
+            <li><a href="../about.html" class="text-gray-400 hover:text-white transition">Quién soy</a></li>
+            <li><a href="../projects.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+            <li><a href="personal.html" class="text-gray-400 hover:text-white transition">Servicios</a></li>
+            <li><a href="../contact.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Servicios</div>
+          <ul class="space-y-2">
+            <li><a href="personal.html" class="text-gray-400 hover:text-white transition">Transformación Personal</a></li>
+            <li><a href="experiencias.html" class="text-gray-400 hover:text-white transition">Experiencias de Paz</a></li>
+            <li><a href="impacto.html" class="text-gray-400 hover:text-white transition">Impacto Social</a></li>
+            <li><a href="ancestral.html" class="text-gray-400 hover:text-white transition">Sabiduría Ancestral</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Conectemos</div>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+          
+          <div class="mt-6">
+            <a href="https://paypal.me/pazynoviolencia" target="_blank" class="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 rounded-full transition">
+              <i class="fas fa-heart mr-2"></i> Apoyar la causa
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-gray-400 text-sm">
+          &copy; 2023 Mensajero de la Paz. Todos los derechos reservados.
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white text-sm mr-4">Políticas de privacidad</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm">Términos y condiciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('mobilePanel');
+    btn?.addEventListener('click', ()=> {
+      panel.classList.toggle('hidden');
+    });
+    
+    // Animación de contadores
+    function animateCounter(elementId, finalValue, duration) {
+      let startTime = null;
+      const element = document.getElementById(elementId);
+      const initialValue = 0;
+      
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const value = Math.floor(progress * (finalValue - initialValue) + initialValue);
+        element.textContent = value;
+        
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      }
+      
+      window.requestAnimationFrame(step);
+    }
+    
+    // Animación al hacer scroll
+    function checkFade() {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementTop < windowHeight * 0.85) {
+          element.classList.add('visible');
+        }
+      });
+    }
+    
+    // Iniciar animaciones cuando la página carga
+    window.addEventListener('load', function() {
+      // Animación de contadores
+      animateCounter('stat1', 25, 2000);
+      animateCounter('stat2', 1800, 2000);
+      animateCounter('stat3', 15, 2000);
+      animateCounter('stat4', 42, 2000);
+      
+      // Configurar observador para animaciones al hacer scroll
+      checkFade();
+      window.addEventListener('scroll', checkFade);
+    });
+  </script>
+</body>
+</html>
