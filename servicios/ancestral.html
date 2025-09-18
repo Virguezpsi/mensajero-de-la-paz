@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mensajero de la Paz — Sabiduría Ancestral</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #3b82f6;
+      --color-secondary: #f59e0b;
+      --color-accent: #10b981;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0fdf4 0%, #fffbeb 100%);
+      color: #1f2937;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .accent-bg {
+      background: linear-gradient(90deg, #f59e0b, #f97316);
+    }
+    
+    .hero-pattern {
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .testimonial-card {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border-radius: 16px;
+      box-shadow: 5px 5px 15px #d1d5db, -5px -5px 15px #ffffff;
+    }
+    
+    .wisdom-card {
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .wisdom-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+    }
+    
+    .ancestral-bg {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23fef3c7"/><circle cx="20" cy="20" r="15" fill="%23d97706"/><circle cx="80" cy="80" r="15" fill="%23d97706"/><circle cx="80" cy="20" r="15" fill="%23d97706"/><circle cx="20" cy="80" r="15" fill="%23d97706"/></svg>');
+    }
+    
+    .healing-bg {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23dcfce7"/><path d="M30,30 L70,70 M70,30 L30,70" stroke="%2316a34a" stroke-width="5"/></svg>');
+    }
+    
+    .ceremony-bg {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ddd6fe"/><circle cx="50" cy="50" r="30" fill="%238b5cf6"/></svg>');
+    }
+    
+    .connection-bg {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ffe4e6"/><path d="M20,50 Q50,0 80,50 Q50,100 20,50" fill="%23fb7185"/></svg>');
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-full bg-green-700 text-white flex items-center justify-center font-bold transition-all duration-300 group-hover:scale-110">JP</div>
+        <div>
+          <div class="font-semibold text-lg">Mensajero de la Paz</div>
+          <div class="text-xs text-slate-500">Paz · No violencia · Transformación</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex gap-6 items-center">
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../about.html">
+          Quién soy
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../projects.html">
+          Proyectos
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="personal.html">
+          Servicios
+          <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-500"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../contact.html">
+          Contacto
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg hover:shadow-lg transition-shadow" href="../contact.html#donar">
+          Apoya la cause
+        </a>
+      </nav>
+
+      <!-- mobile menu -->
+      <div class="md:hidden">
+        <button id="menuBtn" class="p-2 rounded-md border border-gray-300 hover:bg-gray-100 transition">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile menu panel -->
+    <div id="mobilePanel" class="md:hidden hidden bg-white shadow-lg">
+      <div class="px-6 py-4 flex flex-col space-y-3">
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../about.html">Quién soy</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../projects.html">Proyectos</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="personal.html">Servicios</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../contact.html">Contacto</a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg text-center mt-2" href="../contact.html#donar">Apoya</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="hero-pattern py-12 md:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="md:w-2/3">
+            <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-amber-500">
+              Sabiduría Ancestral
+            </h1>
+            <p class="mt-4 text-xl text-slate-600">
+              Reconectando con las raíces, los ciclos naturales y las prácticas sagradas que han guiado a la humanidad hacia la armonía durante milenios.
+            </p>
+            
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="../contact.html" class="px-6 py-3 rounded-full bg-indigo-700 text-white font-medium hover:bg-indigo-800 transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-calendar-check"></i> Participar en ceremonia
+              </a>
+              <a href="#practicas" class="px-6 py-3 rounded-full border border-amber-500 text-amber-600 font-medium hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-spa"></i> Conocer prácticas
+              </a>
+            </div>
+          </div>
+          
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-64 h-64 rounded-full overflow-hidden shadow-xl border-4 border-white bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+              <i class="fas fa-star text-white text-7xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="md:flex gap-12 items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h2 class="text-3xl md:text-4xl font-bold">Reconexión con lo Sagrado</h2>
+            <div class="w-24 h-1 bg-amber-500 mt-4"></div>
+            
+            <p class="mt-6 text-lg text-slate-700">
+              En un mundo cada vez más desconectado de sus raíces, la sabiduría ancestral nos ofrece un camino de regreso a la esencia, a la conexión con la Tierra y con los ciclos naturales que rigen la vida.
+            </p>
+            
+            <p class="mt-4 text-lg text-slate-700">
+              Recuperamos y honramos prácticas milenarias de diversos pueblos originarios, adaptándolas con respeto a nuestro contexto contemporáneo, para que puedas experimentar su poder transformador.
+            </p>
+            
+            <div class="mt-8 bg-amber-50 p-6 rounded-2xl">
+              <p class="text-amber-800 font-medium">
+                <i class="fas fa-quote-left text-amber-500 mr-2"></i>
+                Los ancestros nos susurran verdades eternas a través del viento, las piedras y el fuego. Solo necesitamos aprender a escuchar.
+              </p>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2">
+            <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl">
+              <h3 class="text-xl font-semibold mb-6">¿Por qué reconectar con la sabiduría ancestral?</h3>
+              
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-root"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Raíces Culturales</h4>
+                    <p class="text-slate-600 mt-1">Recuperar la conexión con tus raíces y la historia de tus antepasados.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-mountain"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Conexión con la Tierra</h4>
+                    <p class="text-slate-600 mt-1">Sanar la relación con la naturaleza y reconocerte como parte de ella.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-moon"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Ciclicidad Natural</h4>
+                    <p class="text-slate-600 mt-1">Alinear tu vida con los ciclos naturales y lunares para mayor armonía.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-hand-sparkles"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Sanación Integral</h4>
+                    <p class="text-slate-600 mt-1">Acceder a formas holísticas de sanación cuerpo-mente-espíritu.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prácticas -->
+    <section id="practicas" class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Prácticas Ancestrales</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Experiencias sagradas para reconectar con la sabiduría de nuestros antepasados</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Práctica 1 -->
+          <div class="wisdom-card bg-white rounded-2xl shadow-md card-hover">
+            <div class="wisdom-image ancestral-bg">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm">Ceremonia</span>
+                <span class="ml-2 text-sm text-slate-500"><i class="fas fa-clock mr-1"></i>3-4 horas</span>
+              </div>
+              <h3 class="text-xl font-semibold">Ceremonias de Fuego</h3>
+              <p class="mt-3 text-slate-600">Rituales ancestrales alrededor del fuego para soltar lo que ya no sirve y conectar con la claridad y la transformación.</p>
+              
+              <div class="mt-6">
+                <h4 class="font-medium mb-2">Qué experimentarás:</h4>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Preparación ceremonial del espacio sagrado</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Ofrendas e intenciones al fuego</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Cánticos y meditación con el elemento fuego</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Integración de la experiencia</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-6 flex justify-between items-center">
+                <div class="text-amber-600 font-semibold">Contribución consciente</div>
+                <a href="../contact.html" class="text-amber-500 hover:text-amber-600 font-medium flex items-center">
+                  Participar <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Práctica 2 -->
+          <div class="wisdom-card bg-white rounded-2xl shadow-md card-hover">
+            <div class="wisdom-image healing-bg">
+              <i class="fas fa-spa"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Sanación</span>
+                <span class="ml-2 text-sm text-slate-500"><i class="fas fa-clock mr-1"></i>2 horas</span>
+              </div>
+              <h3 class="text-xl font-semibold">Sanación con Plantas Maestras</h3>
+              <p class="mt-3 text-slate-600">Encuentros respetuosos con plantas medicinales y maestras para apertura de conciencia y sanación profunda.</p>
+              
+              <div class="mt-6">
+                <h4 class="font-medium mb-2">Qué experimentarás:</h4>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Preparación física y mental consciente</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Ingestión ceremonial de medicina ancestral</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Acompañamiento experto durante la experiencia</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Integración posterior con seguimiento</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-6 flex justify-between items-center">
+                <div class="text-amber-600 font-semibold">Contribución consciente</div>
+                <a href="../contact.html" class="text-amber-500 hover:text-amber-600 font-medium flex items-center">
+                  Participar <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Práctica 3 -->
+          <div class="wisdom-card bg-white rounded-2xl shadow-md card-hover">
+            <div class="wisdom-image ceremony-bg">
+              <i class="fas fa-moon"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Ritual</span>
+                <span class="ml-2 text-sm text-slate-500"><i class="fas fa-clock mr-1"></i>2-3 horas</span>
+              </div>
+              <h3 class="text-xl font-semibold">Rituales Lunares</h3>
+              <p class="mt-3 text-slate-600">Ceremonias de conexión con las fases lunares para alinear proyectos, emociones y ciclos personales con los ritmos cósmicos.</p>
+              
+              <div class="mt-6">
+                <h4 class="font-medium mb-2">Qué experimentarás:</h4>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Understanding de las energías de cada fase lunar</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Rituales específicos para luna nueva y llena</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Creación de altar lunar personal</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Prácticas de manifestación y liberación</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-6 flex justify-between items-center">
+                <div class="text-amber-600 font-semibold">Contribución consciente</div>
+                <a href="../contact.html" class="text-amber-500 hover:text-amber-600 font-medium flex items-center">
+                  Participar <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Práctica 4 -->
+          <div class="wisdom-card bg-white rounded-2xl shadow-md card-hover">
+            <div class="wisdom-image connection-bg">
+              <i class="fas fa-drum"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm">Comunidad</span>
+                <span class="ml-2 text-sm text-slate-500"><i class="fas fa-clock mr-1"></i>3 horas</span>
+              </div>
+              <h3 class="text-xl font-semibold">Círculos de Tambores y Cantos</h3>
+              <p class="mt-3 text-slate-600">Encuentros comunitarios donde el ritmo del tambor y la vibración del canto nos conectan con estados alterados de conciencia y unidad.</p>
+              
+              <div class="mt-6">
+                <h4 class="font-medium mb-2">Qué experimentarás:</h4>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Ritmo y percusión como meditación activa</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Cánticos ancestrales de diversas tradiciones</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Danza y movimiento libre consciente</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Estados de trance y conexión comunitaria</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-6 flex justify-between items-center">
+                <div class="text-amber-600 font-semibold">Contribución consciente</div>
+                <a href="../contact.html" class="text-amber-500 hover:text-amber-600 font-medium flex items-center">
+                  Participar <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-12">
+          <a href="../contact.html" class="px-8 py-4 bg-indigo-700 text-white rounded-full font-medium hover:bg-indigo-800 transition inline-flex items-center">
+            <i class="fas fa-calendar-alt mr-2"></i> Consultar calendario de ceremonias
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enfoque Ético -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Nuestro Enfoque Ético</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Honrando las tradiciones con respeto y responsabilidad</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-hands"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Respeto Cultural</h3>
+            <p class="text-slate-600">Honramos las tradiciones originarias y reconocemos sus fuentes, evitando apropiación cultural.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Seguridad</h3>
+            <p class="text-slate-600">Creamos contenedores seguros con preparación, seguimiento y integración para todas las experiencias.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Sostenibilidad</h3>
+            <p class="text-slate-600">Utilizamos recursos de manera consciente y honramos los elementos naturales en todas nuestras prácticas.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-purple-100 text-purple-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Reciprocidad</h3>
+            <p class="text-slate-600">Mantenemos relaciones de reciprocidad con comunidades originarias y apoyamos proyectos de preservación cultural.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Voces de Reconexión</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Experiencias de participantes en nuestras prácticas ancestrales</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center text-amber-700">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="ml-4">
+                <div class="font-semibold">María</div>
+                <div class="text-sm text-slate-500">Participante de Ceremonia de Fuego</div>
+              </div>
+            </div>
+            <p class="text-slate-600">"La ceremonia de fuego fue una de las experiencias más transformadoras de mi vida. Logré soltar cargas que arrastraba por años y sentí una paz profunda que perdura hasta ahora."</p>
+            <div class="mt-4 text-amber-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center text-green-700">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="ml-4">
+                <div class="font-semibold">Javier</div>
+                <div class="text-sm text-slate-500">Participante de Sanación con Plantas</div>
+              </div>
+            </div>
+            <p class="text-slate-600">"El trabajo con plantas maestras me ayudó a ver patrones que ni siquiera sabía que tenía. La integración posterior fue fundamental para aplicar los insights en mi vida diaria."</p>
+            <div class="mt-4 text-amber-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+          
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-purple-200 flex items-center justify-center text-purple-700">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="ml-4">
+                <div class="font-semibold">Ana</div>
+                <div class="text-sm text-slate-500">Participante de Rituales Lunares</div>
+              </div>
+            </div>
+            <p class="text-slate-600">"Seguir los ritmos lunares ha transformado mi relación con el tiempo y la productividad. Ahora fluyo con los ciclos naturales en lugar de luchar contra ellos."</p>
+            <div class="mt-4 text-amber-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Llamado a la acción -->
+    <section class="py-16 bg-gradient-to-r from-green-500 to-amber-500">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold">¿Listo para Reconectar con la Sabiduría Ancestral?</h2>
+        <p class="mt-4 text-xl opacity-90">Únete a nuestras ceremonias y experiencias sagradas para reconectar con las raíces de la humanidad.</p>
+        
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="../contact.html" class="px-8 py-4 bg-white text-amber-600 rounded-full font-medium hover:bg-gray-100 transition shadow-lg hover:shadow-xl">
+            <i class="fas fa-calendar-alt mr-2"></i> Ver calendario
+          </a>
+          <a href="../contact.html" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-amber-600 transition">
+            <i class="fas fa-question-circle mr-2"></i> Hacer preguntas
+          </a>
+        </div>
+        
+        <p class="mt-8 text-amber-100">Todas nuestras ceremonias incluyen preparación, acompañamiento experto e integración posterior.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-white pt-12 pb-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="font-semibold text-xl mb-4">Mensajero de la Paz</div>
+          <p class="text-gray-400">Transformando la rabia en acción consciente, construyendo paz desde lo personal a lo colectivo.</p>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Enlaces rápidos</div>
+          <ul class="space-y-2">
+            <li><a href="../about.html" class="text-gray-400 hover:text-white transition">Quién soy</a></li>
+            <li><a href="../projects.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+            <li><a href="personal.html" class="text-gray-400 hover:text-white transition">Servicios</a></li>
+            <li><a href="../contact.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Servicios</div>
+          <ul class="space-y-2">
+            <li><a href="personal.html" class="text-gray-400 hover:text-white transition">Transformación Personal</a></li>
+            <li><a href="experiencias.html" class="text-gray-400 hover:text-white transition">Experiencias de Paz</a></li>
+            <li><a href="impacto.html" class="text-gray-400 hover:text-white transition">Impacto Social</a></li>
+            <li><a href="ancestral.html" class="text-gray-400 hover:text-white transition">Sabiduría Ancestral</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Conectemos</div>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+          
+          <div class="mt-6">
+            <a href="https://paypal.me/pazynoviolencia" target="_blank" class="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 rounded-full transition">
+              <i class="fas fa-heart mr-2"></i> Apoyar la causa
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-gray-400 text-sm">
+          &copy; 2023 Mensajero de la Paz. Todos los derechos reservados.
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white text-sm mr-4">Políticas de privacidad</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm">Términos y condiciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('mobilePanel');
+    btn?.addEventListener('click', ()=> {
+      panel.classList.toggle('hidden');
+    });
+    
+    // Animación al hacer scroll
+    function checkFade() {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementTop < windowHeight * 0.85) {
+          element.classList.add('visible');
+        }
+      });
+    }
+    
+    // Iniciar animaciones cuando la página carga
+    window.addEventListener('load', function() {
+      // Configurar observador para animaciones al hacer scroll
+      checkFade();
+      window.addEventListener('scroll', checkFade);
+    });
+  </script>
+</body>
+</html>
