@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mensajero de la Paz — Comunidad en Acción</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #3b82f6;
+      --color-secondary: #f59e0b;
+      --color-accent: #10b981;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0fdf4 0%, #fffbeb 100%);
+      color: #1f2937;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .accent-bg {
+      background: linear-gradient(90deg, #f59e0b, #f97316);
+    }
+    
+    .hero-pattern {
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .testimonial-card {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border-radius: 16px;
+      box-shadow: 5px 5px 15px #d1d5db, -5px -5px 15px #ffffff;
+    }
+    
+    .project-card {
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .project-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+    }
+    
+    .community-bg-1 {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ec4899"/><circle cx="35" cy="35" r="15" fill="%23ffffff"/><circle cx="65" cy="35" r="15" fill="%23ffffff"/><path d="M30,65 Q50,75 70,65" stroke="%23ffffff" stroke-width="3" fill="none"/></svg>');
+    }
+    
+    .community-bg-2 {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230ea5e9"/><circle cx="50" cy="50" r="30" fill="%23ffffff"/><path d="M35,35 L65,65 M65,35 L35,65" stroke="%230ea5e9" stroke-width="5"/></svg>');
+    }
+    
+    .community-bg-3 {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2316a34a"/><circle cx="50" cy="50" r="35" fill="%23ffffff"/><circle cx="50" cy="50" r="25" fill="%2316a34a"/><circle cx="50" cy="50" r="15" fill="%23ffffff"/></svg>');
+    }
+    
+    .community-bg-4 {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f59e0b"/><path d="M30,30 L50,70 L70,30" fill="%23ffffff"/><rect x="40" y="50" width="20" height="20" fill="%23f59e0b"/></svg>');
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-full bg-green-700 text-white flex items-center justify-center font-bold transition-all duration-300 group-hover:scale-110">JP</div>
+        <div>
+          <div class="font-semibold text-lg">Mensajero de la Paz</div>
+          <div class="text-xs text-slate-500">Paz · No violencia · Transformación</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex gap-6 items-center">
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../about.html">
+          Quién soy
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../projects.html">
+          Proyectos
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="index.html">
+          Servicios
+          <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-500"></span>
+        </a>
+        <a class="hover:text-orange-500 transition-colors relative group-nav" href="../contact.html">
+          Contacto
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-nav-hover:w-full"></span>
+        </a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg hover:shadow-lg transition-shadow" href="../contact.html#donar">
+          Apoya la causa
+        </a>
+      </nav>
+
+      <!-- mobile menu -->
+      <div class="md:hidden">
+        <button id="menuBtn" class="p-2 rounded-md border border-gray-300 hover:bg-gray-100 transition">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile menu panel -->
+    <div id="mobilePanel" class="md:hidden hidden bg-white shadow-lg">
+      <div class="px-6 py-4 flex flex-col space-y-3">
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../about.html">Quién soy</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../projects.html">Proyectos</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="index.html">Servicios</a>
+        <a class="py-2 px-4 rounded-md hover:bg-gray-100 transition" href="../contact.html">Contacto</a>
+        <a class="px-4 py-2 rounded-full text-white accent-bg text-center mt-2" href="../contact.html#donar">Apoya</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="hero-pattern py-12 md:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="md:w-2/3">
+            <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-amber-500">
+              Comunidad en Acción
+            </h1>
+            <p class="mt-4 text-xl text-slate-600">
+              Fortalecemos el tejido social a través de procesos participativos, proyectos comunitarios y la construcción colectiva de paz.
+            </p>
+            
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="../contact.html" class="px-6 py-3 rounded-full bg-indigo-700 text-white font-medium hover:bg-indigo-800 transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-hands-helping"></i> Solicitar asesoría
+              </a>
+              <a href="#proyectos" class="px-6 py-3 rounded-full border border-amber-500 text-amber-600 font-medium hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-eye"></i> Ver proyectos
+              </a>
+            </div>
+          </div>
+          
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-64 h-64 rounded-full overflow-hidden shadow-xl border-4 border-white bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
+              <i class="fas fa-hands-helping text-white text-7xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="md:flex gap-12 items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h2 class="text-3xl md:text-4xl font-bold">¿Qué es Comunidad en Acción?</h2>
+            <div class="w-24 h-1 bg-amber-500 mt-4"></div>
+            
+            <p class="mt-6 text-lg text-slate-700">
+              Comunidad en Acción es una línea de trabajo dedicada al fortalecimiento del tejido social a través de procesos participativos, inclusivos y transformadores. Creemos que la paz se construye colectivamente, desde las bases comunitarias.
+            </p>
+            
+            <p class="mt-4 text-lg text-slate-700">
+              Trabajamos con comunidades, barrios y organizaciones para desarrollar capacidades locales, facilitar la resolución pacífica de conflictos y co-crear proyectos que respondan a las necesidades reales de cada contexto.
+            </p>
+            
+            <div class="mt-8 bg-pink-50 p-6 rounded-2xl">
+              <p class="text-pink-800 font-medium">
+                <i class="fas fa-quote-left text-pink-500 mr-2"></i>
+                Nadie puede hacer por nosotros lo que nosotros no podemos hacer por nosotros mismos, pero tampoco podemos hacerlo solos.
+              </p>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2">
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl">
+              <h3 class="text-xl font-semibold mb-6">¿Por qué trabajar con comunidades?</h3>
+              
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Resiliencia colectiva</h4>
+                    <p class="text-slate-600 mt-1">Las comunidades unidas pueden enfrentar mejor las adversidades y transformar conflictos.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-seedling"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Sabiduría local</h4>
+                    <p class="text-slate-600 mt-1">Cada comunidad tiene conocimientos y recursos valiosos para su propio desarrollo.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-network-wired"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Tejido social</h4>
+                    <p class="text-slate-600 mt-1">Fortalecer las redes comunitarias previene violencias y crea entornos más seguros.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mt-1 mr-4">
+                    <i class="fas fa-handshake"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Transformación sostenible</h4>
+                    <p class="text-slate-600 mt-1">Los cambios impulsados desde dentro de la comunidad son más perdurables.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos Comunitarios -->
+    <section id="proyectos" class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Proyectos Comunitarios</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Iniciativas que fortalecen el tejido social y promueven la paz desde lo local</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Proyecto 1 -->
+          <div class="project-card bg-white rounded-2xl shadow-md card-hover">
+            <div class="project-image community-bg-1">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Agricultura urbana</span>
+              </div>
+              <h3 class="text-xl font-semibold">Huertas Comunitarias</h3>
+              <p class="mt-3 text-slate-600">Espacios de cultivo colectivo que fomentan la soberanía alimentaria, el trabajo en equipo y la conexión con la tierra.</p>
+              
+              <div class="mt-6">
+                <h4 class="font-medium mb-2">Impacto logrado:</h4>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>+5 huertas comunitarias establecidas</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Fortalecimiento de redes vecinales</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Acceso a alimentos frescos y saludables</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Espacios de reconciliación y diálogo</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-6 flex justify-between items-center">
+                <a href="../contact.html" class="text-amber-500 hover:text-amber-600 font-medium flex items-center">
+                  Replicar en mi comunidad <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Proyecto 2 -->
+          <div class="project-card bg-white rounded-2xl shadow-md card-hover">
+            <div class="project-image community-bg-2">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Resolución de conflictos</span>
+              </div>
+              <h3 class="text-xl font-semibold">Círculos de Justicia Comunitaria</h3>
+              <p class="mt-3 text-slate-600">Espacios seguros para resolver conflictos vecinales mediante el diálogo restaurativo y la escucha profunda.</p>
+              
+              <div class="mt-6">
+                <h4 class="font-medium mb-2">Impacto logrado:</h4>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Resolución pacífica de 30+ conflictos</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Capacitación de líderes comunitarios</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Reducción de tensiones vecinales</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Protocolos comunitarios de convivencia</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-6 flex justify-between items-center">
+                <a href="../contact.html" class="text-amber-500 hover:text-amber-600 font-medium flex items-center">
+                  Replicar en mi comunidad <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Proyecto 3 -->
+          <div class="project-card bg-white rounded-2xl shadow-md card-hover">
+            <div class="project-image community-bg-3">
+              <i class="fas fa-child"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm">Juventud</span>
+              </div>
+              <h3 class="text-xl font-semibold">Liderazgo Joven para la Paz</h3>
+              <p class="mt-3 text-slate-600">Formación de jóvenes como agentes de cambio en sus comunidades, desarrollando habilidades de liderazgo pacífico.</p>
+              
+              <div class="mt-6">
+                <h4 class="font-medium mb-2">Impacto logrado:</h4>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>+100 jóvenes formados como líderes</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Proyectos juveniles autogestionados</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Reducción de participación en violencias</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Espacios seguros para la juventud</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-6 flex justify-between items-center">
+                <a href="../contact.html" class="text-amber-500 hover:text-amber-600 font-medium flex items-center">
+                  Replicar en mi comunidad <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Proyecto 4 -->
+          <div class="project-card bg-white rounded-2xl shadow-md card-hover">
+            <div class="project-image community-bg-4">
+              <i class="fas fa-female"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">Mujeres</span>
+              </div>
+              <h3 class="text-xl font-semibold">Mujeres Tejedoras de Paz</h3>
+              <p class="mt-3 text-slate-600">Empoderamiento de mujeres como constructoras de paz y agentes de transformación en sus territorios.</p>
+              
+              <div class="mt-6">
+                <h4 class="font-medium mb-2">Impacto logrado:</h4>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>+15 grupos de mujeres organizadas</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Proyectos productivos liderados por mujeres</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Prevención de violencias de género</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                    <span>Fortalecimiento de redes de apoyo</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-6 flex justify-between items-center">
+                <a href="../contact.html" class="text-amber-500 hover:text-amber-600 font-medium flex items-center">
+                  Replicar en mi comunidad <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metodología -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Nuestra Metodología Comunitaria</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Enfoques participativos que garantizan procesos auténticos y sostenibles</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Diagnóstico Participativo</h3>
+            <p class="text-slate-600">La comunidad identifica sus propias necesidades, recursos y prioridades mediante metodologías participativas.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Planificación Colectiva</h3>
+            <p class="text-slate-600">Diseñamos juntos los proyectos y acciones, asegurando que respondan a visiones e intereses compartidos.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Implementación Conjunta</h3>
+            <p class="text-slate-600">Todos participamos en la ejecución, desarrollando capacidades locales y apropiación de los procesos.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-purple-100 text-purple-600 text-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Evaluación Continua</h3>
+            <p class="text-slate-600">Aseguramos aprendizajes constantes y ajustes necesarios mediante monitoreo y evaluación participativa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Voces de la Comunidad</h2>
+          <div class="w-24 h-1 bg-amber-500 mx-auto mt-4"></div>
+          <p class="mt-4 text-lg text-slate-600">Testimonios de quienes han participado en nuestros procesos comunitarios</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center text-green-700">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="ml-4">
+                <div class="font-semibold">Doña Rosa</div>
+                <div class="text-sm text-slate-500">Líder comunitaria, Barrio La Esperanza</div>
+              </div>
+            </div>
+            <p class="text-slate-600">"Gracias a la huerta comunitaria, no solo tenemos alimentos más sanos, sino que hemos recuperado la confianza entre vecinos. Ahora resolvemos nuestros problemas dialogando."</p>
+            <div class="mt-4 text-amber-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-blue-200 flex items-center justify-center text-blue-700">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="ml-4">
+                <div class="font-semibold">Carlos Arturo</div>
+                <div class="text-sm text-slate-500">Joven participante, Comuna 8</div>
+              </div>
+            </div>
+            <p class="text-slate-600">"El programa de liderazgo juvenil me enseñó que puedo ser agente de cambio. Ahora coordino un colectivo de arte para la paz en mi barrio."</p>
+            <div class="mt-4 text-amber-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+          
+          <div class="testimonial-card p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center text-amber-700">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="ml-4">
+                <div class="font-semibold">María Elena</div>
+                <div class="text-sm text-slate-500">Coordinadora de Mujeres Tejedoras de Paz</div>
+              </div>
+            </div>
+            <p class="text-slate-600">"A través del círculo de mujeres, hemos encontrado fuerza colectiva. Ya no nos sentimos solas frente a las dificultades y hemos creado una red de apoyo mutuo."</p>
+            <div class="mt-4 text-amber-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Llamado a la acción -->
+    <section class="py-16 bg-gradient-to-r from-green-500 to-amber-500">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold">¿Quieres Fortalecer tu Comunidad?</h2>
+        <p class="mt-4 text-xl opacity-90">Juntos podemos desarrollar procesos transformadores en tu barrio, vereda o organización</p>
+        
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="../contact.html" class="px-8 py-4 bg-white text-amber-600 rounded-full font-medium hover:bg-gray-100 transition shadow-lg hover:shadow-xl">
+            <i class="fas fa-hands-helping mr-2"></i> Solicitar asesoría
+          </a>
+          <a href="../contact.html" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-amber-600 transition">
+            <i class="fas fa-calendar-alt mr-2"></i> Agendar diagnóstico
+          </a>
+        </div>
+        
+        <p class="mt-8 text-amber-100">Ofrecemos acompañamiento para diagnosticar, planificar e implementar proyectos comunitarios</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-white pt-12 pb-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="font-semibold text-xl mb-4">Mensajero de la Paz</div>
+          <p class="text-gray-400">Transformando la rabia en acción consciente, construyendo paz desde lo personal a lo colectivo.</p>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Enlaces rápidos</div>
+          <ul class="space-y-2">
+            <li><a href="../about.html" class="text-gray-400 hover:text-white transition">Quién soy</a></li>
+            <li><a href="../projects.html" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Servicios</a></li>
+            <li><a href="../contact.html" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Servicios</div>
+          <ul class="space-y-2">
+            <li><a href="personal.html" class="text-gray-400 hover:text-white transition">Transformación Personal</a></li>
+            <li><a href="experiencias.html" class="text-gray-400 hover:text-white transition">Experiencias de Paz</a></li>
+            <li><a href="impacto.html" class="text-gray-400 hover:text-white transition">Impacto Social</a></li>
+            <li><a href="comunidad.html" class="text-gray-400 hover:text-white transition">Comunidad en Acción</a></li>
+            <li><a href="ancestral.html" class="text-gray-400 hover:text-white transition">Sabiduría Ancestral</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="font-semibold text-lg mb-4">Conectemos</div>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+          
+          <div class="mt-6">
+            <a href="https://paypal.me/pazynoviolencia" target="_blank" class="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 rounded-full transition">
+              <i class="fas fa-heart mr-2"></i> Apoyar la causa
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-gray-400 text-sm">
+          &copy; 2023 Mensajero de la Paz. Todos los derechos reservados.
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white text-sm mr-4">Políticas de privacidad</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm">Términos y condiciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('mobilePanel');
+    btn?.addEventListener('click', ()=> {
+      panel.classList.toggle('hidden');
+    });
+    
+    // Animación al hacer scroll
+    function checkFade() {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementTop < windowHeight * 0.85) {
+          element.classList.add('visible');
+        }
+      });
+    }
+    
+    // Iniciar animaciones cuando la página carga
+    window.addEventListener('load', function() {
+      // Configurar observador para animaciones al hacer scroll
+      checkFade();
+      window.addEventListener('scroll', checkFade);
+    });
+  </script>
+</body>
+</html>
